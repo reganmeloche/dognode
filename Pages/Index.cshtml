@@ -1,0 +1,59 @@
+@page
+@model DogNode.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home";
+
+    var alertClass = Model.Result.Passed ? "bg-passed" : "bg-failed";  
+}
+
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="bg-yellow border rounded p-4" style="width: 500px;">
+        <form method="post" class="text-center">
+            <div class="form-group mx-auto">
+                <input type="password" class="form-control form-control-lg" id="inputText" name="InputText" value="@Model.DefaultValue">
+            </div>
+
+            <!-- Button 1 -->
+            <button type="submit" name="SelectedOption" value="sound" class="btn btn-purple btn-lg" style="width: 48%;">Sound</button>
+            
+            <!-- Button 2 -->
+            <button type="submit" name="SelectedOption" value="buzz" class="btn btn-orange btn-lg" style="width: 48%;">Buzz</button>
+        </form>
+
+        <div class="container mt-3 text-light text-center py-2 @alertClass">@Model.Result.Message</div>
+    </div>
+</div>
+
+
+<style>
+    /* Custom button colors */
+    .btn-purple {
+        background-color: rgb(236, 156, 236);
+        border-color: rgb(236, 156, 236);
+    }
+
+    .btn-orange {
+        background-color: orange;
+        border-color: orange;
+    }
+
+    .bg-yellow {
+        background-color: rgb(234, 234, 151);
+    }
+
+    .bg-passed {
+        background-color: rgb(100, 152, 23);
+    }
+
+    .bg-failed {
+        background-color: rgb(125, 36, 12);
+    }
+
+    body {
+            /* Set background image and repeat it */
+            background-image: url('@Model.BackgroundImageUrl');
+            background-repeat: repeat;
+
+            /* Add additional styles as needed */
+        }
+</style>

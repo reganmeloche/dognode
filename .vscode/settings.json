@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/32bdb25f-3390-49c3-a4f2-f22058e197e7/resourceGroups/dognodeforhien_group/providers/Microsoft.Web/sites/dognodeforhien",
+    "appService.deploySubpath": "bin\\Release\\net8.0\\publish"
+}
