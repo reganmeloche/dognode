@@ -102,7 +102,7 @@ void reconnect() {
   }
 }
 
-/***** Call back Method for Receiving MQTT messages and Switching LED ****/
+/***** Call back Method for Receiving MQTT messages and toggling outputs ****/
 void callback(char* topic, byte* payload, unsigned int length) {
   String message = "";
   for (int i = 0; i < length; i++) message+=(char)payload[i];
@@ -110,7 +110,6 @@ void callback(char* topic, byte* payload, unsigned int length) {
   Serial.println("Message arrived [" + String(topic) + "]" + message);
 
   if (message == "S") {
-    Serial.println("toggling!");
     digitalWrite(SOUND_PIN, HIGH); // Turn on transistor
     delay(2000); // Wait for 2 seconds
     digitalWrite(SOUND_PIN, LOW); // Turn off transistor
