@@ -11,20 +11,34 @@ namespace DogNode.Pages
         public IndexModel(IProcessInput inputProcessor) {
             _inputProcessor = inputProcessor;
             Result = new ProcessResult("");
+            // Default value for the password field
             DefaultValue = "...";
 
+            // Choose a random image from wwwroot/images
             Random rand = new Random();
             int index = rand.Next(1,7);
             BackgroundImageUrl =$"/images/img{index}.jpg";
         }
 
+        /// <summary>
+        /// Value entered for the password
+        /// </summary>
         [BindProperty]
         public string InputText { get; set; }
 
+        /// <summary>
+        /// Default password value
+        /// </summary>
         public string DefaultValue { get; set; }
 
+        /// <summary>
+        /// Result of processing
+        /// </summary>
         public ProcessResult Result { get; set; }
 
+        /// <summary>
+        /// URL for background image displayed on the page
+        /// </summary>
         public string BackgroundImageUrl { get; private set; }
 
         public void OnGet()
@@ -47,6 +61,7 @@ namespace DogNode.Pages
                 _ => throw new Exception("Invalid action type")
             };
 
+            // Call the main processing function
             Result = await _inputProcessor.Process(InputText, nodeAction);
             DefaultValue = InputText;
 

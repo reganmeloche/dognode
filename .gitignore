@@ -3,6 +3,7 @@
 ##
 ## Get latest from `dotnet new gitignore`
 dog-node-creds.txt
+todo.txt
 
 # dotenv files
 .env

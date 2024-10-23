@@ -6,13 +6,13 @@ bool DEBUG = true;
 
 /*** COMMUNICATION SETUP ***/
 
-// MQTT Info: Obtained from cloudMQTT
+// MQTT Info: Obtained from HiveMQTT
 const char *MQTT_SERVER = "XXX.s1.eu.hivemq.cloud";
 const int MQTT_PORT = 8883;
 const char *MQTT_USER = "admin";
 const char *MQTT_PASSWORD = "";
 
-// MQTT Topics
+// MQTT Topic
 const char *SUB_TOPIC = "sample";
 
 /// WiFi Network credentials
@@ -89,7 +89,7 @@ void reconnect() {
     String clientId = "ESP8266Client-";   // Create a random client ID
     clientId += String(random(0xffff), HEX);
 
-    // Attempt to connect
+    // Attempt to connect and subscribe
     if (client.connect(clientId.c_str(), MQTT_USER, MQTT_PASSWORD)) {
       Serial.println("connected");
       client.subscribe(SUB_TOPIC);
